@@ -1,22 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const workout_router = require("./routes/router");
-const user_router = require("./routes/user-router");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 
-const options = {
-  origin: "*",
-};
-
-app.use(cors(options));
 app.use("/api/workouts", workout_router);
-app.use("/api/users/", user_router);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 //connecting to database
 
